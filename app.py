@@ -1,13 +1,17 @@
-from flask import Flask, jsonify
-import json
+from flask import Flask, render_template, request, jsonify
+from pymongo import MongoClient
+
 
 app = Flask(__name__)
 
-@app.route('/api')
-def get_data():
-    with open('data.json') as f:
-        data = json.load(f)
-    return jsonify(data)
+
+
+
+@app.route('/')
+def home():
+    return render_template('todo.html')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
